@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f8f3ea;
+  --airplane-view: #80b0e8;
+  --peony-bundle: #ffc0c0;
+  --tropical-rain: #008471;
+  --autumn-lavender: #d1caea;
+  --limeade: #d6d35f;
+  --tomato-jam: #c45f3f;
+  --pure-sun: #ffd242;
+  --monet-ponds: #898e46;
+  --bubblegum: #f29cc3;
 }
 
 @theme inline {
