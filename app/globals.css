@@ -11,6 +11,8 @@
   --pure-sun: #ffd242;
   --monet-ponds: #898e46;
   --bubblegum: #f29cc3;
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "Nunito", sans-serif;
 }
 
 @theme inline {
