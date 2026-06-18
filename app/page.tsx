@@ -1,4 +1,17 @@
+"use client";
+import {useState} from "react";
 export default function Home() {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    setSelectedFile(file);
+    setPreviewUrl(URL.createObjectURL(file));
+  }
   return (
     <main className="min-h-screen bg-[#F8F3EA] px-5 py-8 text-[#008471]">
       <section className="mx-auto max-w-[430px]">
@@ -40,7 +53,15 @@ export default function Home() {
 
         <div className="rounded-[32px] bg-[#FFC0C0] p-5">
           <div className="flex min-h-[240px] flex-col items-center justify-center rounded-[24px] border-2 border-dashed border-[#008471] bg-[#F8F3EA] p-6 text-center">
-            <p className="text-5xl">📸</p>
+            {previewUrl ? (
+              <img
+                src={previewUrl}
+                alt="Selected yarn"
+                className="h-40 w-40 rounded-[28px] object-cover"
+              />
+            ) : (
+              <p className="text-5xl">📸</p>
+            )}
 
             <p className="mt-4 text-xl font-black text-[#008471]">
               Upload yarn photo
@@ -50,9 +71,20 @@ export default function Home() {
               JPG, PNG, or HEIC from your phone camera
             </p>
 
-            <button className="mt-6 rounded-full bg-[#FFD242] px-6 py-3 text-sm font-black uppercase tracking-wide text-[#008471]">
-              Choose photo
-            </button>
+            <label className="mt-6 inline-flex cursor-pointer rounded-full bg-[#FFD242] px-8 py-4 text-sm font-black tracking-wide text-[#008471]">
+              CHOOSE PHOTO
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+            </label>
+            {selectedFile && (
+              <button className="mt-4 rounded-full bg-[#008471] px-8 py-4 text-sm font-black tracking-wide text-[#F8F3EA]">
+                ANALYZE YARN
+              </button>
+            )}
           </div>
         </div>
 
